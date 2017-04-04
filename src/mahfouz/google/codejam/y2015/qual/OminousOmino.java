@@ -1,6 +1,5 @@
 package mahfouz.google.codejam.y2015.qual;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ import java.util.Scanner;
 public final class OminousOmino {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner s = new Scanner(new File("/Users/amahfouz/Desktop/gcj.in"));
+        Scanner s = new Scanner(System.in);
 
         int numCases = s.nextInt();
 
@@ -19,16 +18,20 @@ public final class OminousOmino {
             int r = s.nextInt();
             int c = s.nextInt();
 
-            final boolean canWin;
-            if (x == 1)
+            boolean canWin;
+            if (! (r*c % x == 0))
+                canWin = false;
+            else if (x == 1 || x == 2)
                 canWin = true;
-            else if (x == 2)
-                canWin = r*c % 2 == 0;
             else if (x == 3)
-                canWin = r*c % 3 == 0 && (r > 1 && c > 1);
+                canWin = (r > 1 && c > 1);
             else if (x == 4)
-                canWin = r*c % 4 == 0 && (r > 2 && c > 2);
-            else
+                canWin = (r > 2 && c > 2);
+            else if (x == 5)
+                canWin = Math.min(r, c) >= 3 && (r*c != 15);
+            else if (x == 6)
+                canWin = Math.min(r, c) >= 4;
+            else // starting 7 and up no wins
                 canWin = false;
 
             String winner = canWin
