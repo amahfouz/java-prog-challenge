@@ -1,4 +1,4 @@
-package mahfouz.google.codejam.y2015.qual;
+package mahfouz.google.codejam.y2008.qual;
 
 import java.util.ArrayList;
 import java.util.Collections;
