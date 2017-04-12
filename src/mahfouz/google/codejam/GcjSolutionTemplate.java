@@ -1,7 +1,5 @@
 package mahfouz.google.codejam;
 
-import java.io.File;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
@@ -9,37 +7,19 @@ import java.util.Scanner;
  */
 public final class GcjSolutionTemplate {
 
-    private void solveCase(int caseNum, PrintStream out) {
-
-    }
-
-    private GcjSolutionTemplate(Scanner s) {
-
-    }
-
-    public static void main(String[] args) throws Exception{
-        Scanner s = new Scanner
-            (new File("C:\\Users\\amahfouz\\Downloads\\cj.in"));
-        PrintStream out = new PrintStream
-            (new File("C:\\Users\\amahfouz\\Desktop\\solution.txt"));
-
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
         int numCases = s.nextInt();
+        s.nextLine();
 
         for (int i = 0; i < numCases; i++) {
-            new GcjSolutionTemplate(s).solveCase(i + 1, out);
-            System.out.println("Finished " + (i + 1));
+            solveCase(i+1, s);
         }
-
-        s.close();
-        out.close();
     }
 
-    private static void outputCase(PrintStream out, int caseNum, String output) {
-        out.println("Case #" + caseNum + ": " + output);
-    }
+    private static void solveCase(int caseNum, Scanner s) {
 
-    private static void outputCase(PrintStream out, int caseNum, long output) {
-        out.println("Case #" + caseNum + ": " + output);
+        int solution = 0;
+        System.out.println("Case #" + caseNum + ": " + solution);
     }
-
 }
