@@ -5,7 +5,6 @@
 
 package mahfouz.google.codejam.y2012.round1a;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -135,7 +134,7 @@ public final class KingdomRush {
     }
 
     public static void main(String[] args) throws Exception {
-        Scanner s = new Scanner(new File("C:\\Users\\amahfouz\\Downloads\\cj.in"));
+        Scanner s = new Scanner(System.in);
 
         int numCases = s.nextInt();
 
