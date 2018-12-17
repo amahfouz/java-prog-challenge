@@ -7,11 +7,14 @@ public final class SubsequenceWithLargestSum {
 
     public static StartEnd computeLinear(int [] array) {
 
+        // current best subsequence specified by those
         int bestStart = 0;
         int bestEnd = 0;
         int bestSum = 0;
 
+        // current candidate subsequence specified by those
         int head = 0;
+        int tail = -1;
         int curSum = 0;
 
         while (head < array.length) {
@@ -20,14 +23,11 @@ public final class SubsequenceWithLargestSum {
             if (curSum > bestSum) {
                 bestSum = curSum;
                 bestEnd = head;
+                bestStart = tail + 1;
             }
-            else if (curSum < 0) {
-                bestStart = head + 1;
-                bestEnd = bestStart;
+            else if (curSum <= 0) {
+                tail = head;
                 curSum = 0;
-                //wrong();
-                // TODO
-                bestSum = 0;
             }
             head++;
         }
@@ -37,11 +37,13 @@ public final class SubsequenceWithLargestSum {
         else
             System.err.println(bestStart + ", " + bestEnd + " = " + bestSum);
 
-        return null;
+        return new StartEnd(bestStart, bestEnd);
     }
 
     public static void main(String[] args) {
-        computeLinear(new int[] {-1, 3, 1, -2, -3, 3, -3, 2, 2});
+        //new int[] {-1, 3, 1, -2, -3, 3, -3, 2, 2}
+        StartEnd result = computeLinear(new int[] {3, -2, -2});
+        System.out.println(result);
     }
 
     private static final class StartEnd {
@@ -53,6 +55,10 @@ public final class SubsequenceWithLargestSum {
             assert(end >= start);
             this.start = start;
             this.end = end;
+        }
+
+        public String toString() {
+            return "(" + start +", " + end +")";
         }
     }
 }
