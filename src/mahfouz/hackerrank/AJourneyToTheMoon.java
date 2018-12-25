@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
+/**
+ * Quick and dirty solution to the "Journeyy to the moon".
+ * A better solution would use an array for representing the "disjoint set" structure.
+ */
 public final class AJourneyToTheMoon {
 
 	public static void main(String[] args) {
