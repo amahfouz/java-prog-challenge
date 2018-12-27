@@ -1,11 +1,8 @@
 package mahfouz.hackerrank;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * Solution for 
