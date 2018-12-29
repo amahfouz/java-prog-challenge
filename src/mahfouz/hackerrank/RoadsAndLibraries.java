@@ -33,11 +33,11 @@ public final class RoadsAndLibraries {
             if (components[i].parent == i) {
                 numComponents++;
                 // rank - 1 edges to connect cities in a component
-                totalCost += costRoad * (components[i].numMembers - 1); 
+                totalCost += (long)costRoad * (components[i].numMembers - 1); 
             }
         }
         // one lib per connected component
-        totalCost += numComponents * costLib;
+        totalCost += numComponents * (long)costLib;
         
         return totalCost;
     }
