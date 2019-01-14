@@ -38,8 +38,8 @@ public final class RealEstateBroker {
          */
         
         public static int computeNumSales(HouseSpec[] buyers, HouseSpec[] houses) {
-            Arrays.sort(houses, new AscAreaAscPrice());
-            Arrays.sort(buyers, new AscPrice());
+            Arrays.sort(houses, new ByArea());
+            Arrays.sort(buyers, new ByPrice());
             boolean [] bought = new boolean[buyers.length];
 
             int sold = 0;
@@ -58,7 +58,7 @@ public final class RealEstateBroker {
         private static int pickCheapestBuyer
             (HouseSpec house, HouseSpec[] buyers, boolean[] bought) {
 
-            int prospect = Arrays.binarySearch(buyers, house, new AscPrice());
+            int prospect = Arrays.binarySearch(buyers, house, new ByPrice());
             if (prospect < 0)
                 prospect = - (prospect + 1);
 
@@ -92,7 +92,7 @@ public final class RealEstateBroker {
         /**
          * Ascending by price.
          */
-        private static final class AscPrice 
+        private static final class ByPrice 
             implements Comparator<HouseSpec> {
     
             @Override
@@ -104,15 +104,12 @@ public final class RealEstateBroker {
         /**
          * Ascending area and ascending price
          */
-        private static final class AscAreaAscPrice 
+        private static final class ByArea 
             implements Comparator<HouseSpec> {
 
             @Override
             public int compare(HouseSpec h1, HouseSpec h2) {
-                int areaDiff = h1.area - h2.area;
-                return areaDiff != 0
-                    ? areaDiff
-                    : h1.price - h2.price;        
+                return h1.area - h2.area;
             }
         }
         
