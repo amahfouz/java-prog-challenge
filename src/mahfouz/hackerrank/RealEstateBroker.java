@@ -30,7 +30,7 @@ public final class RealEstateBroker {
         }
 
         /**
-         * Sort houses by actual area then by price.
+         * Sort houses by area. 
          * Sort buyers by price.
          *
          * For every house:
