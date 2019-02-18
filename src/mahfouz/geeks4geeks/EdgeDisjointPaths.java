@@ -1,7 +1,5 @@
 package mahfouz.geeks4geeks;
 
-import java.util.List;
-
 /**
  * Solution for 
  * https://www.geeksforgeeks.org/find-edge-disjoint-paths-two-vertices/
