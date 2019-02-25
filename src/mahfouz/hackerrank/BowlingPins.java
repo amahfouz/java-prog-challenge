@@ -3,8 +3,18 @@ package mahfouz.hackerrank;
 import java.util.Scanner;
 
 /**
+ * NOTE: This is not complete.
+ * 
  * Solution for 
  * https://www.hackerrank.com/challenges/bowling-pins/problem
+ * 
+ * Basic idea:
+ * 
+ * Given a configuration:
+ * - Consider all configurations resulting from removing either one or two pins
+ * - For each configuration determine if it is winning or losing (recursion)
+ * - If all resulting configurations are winning, then we lose, otherwise we win
+ * 
  */
 public final class BowlingPins {
     
@@ -13,17 +23,16 @@ public final class BowlingPins {
     private static final class Solution {
         
         // number of contiguous pin segments 
-        private final int numSegments;
+        private final int numNonSingles;
         // number of segments that are formed of a single pin
         private final int numSingles;
         
         public Solution(Scanner s) {
             // consume number of pins, not needed and go to next line
-            String s1 = s.nextLine();
-            String config = s.nextLine();
+            s.nextLine();
             
-//            System.out.println("s1="+s1);
-//            System.out.println("conf="+config);
+            // append an extra X to terminate the final segment
+            String config = s.nextLine() + 'X';
             
             int countSegments = 0;
             int countSingles = 0;
@@ -47,7 +56,7 @@ public final class BowlingPins {
                     curSegmentLength = 0;
                 }
             }
-            this.numSegments = countSegments;
+            this.numNonSingles = countSegments - countSingles;
             this.numSingles = countSingles;
         }
         
@@ -57,8 +66,7 @@ public final class BowlingPins {
         // pins has to be odd. Again, to prove, start with a config
         // such as IXXIXXII --> lose, but IXXIXXI --> win, and so on)
         public boolean isWinning() {
-            return numSegments % 2 == 0
-                && numSingles % 2 != 0;
+            return ((numSingles + numNonSingles) % 2 != 0);
         }
     }
     
